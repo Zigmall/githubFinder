@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 
 class Search extends Component {
     state = {
         text: '',
     }
 
+    static propTypes = {
+        searchUser: PropTypes.func.isRequired,
+    }
+
     onChange = e => this.setState({ [e.target.name]: e.target.value });
     
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.text)
+        this.props.searchUser(this.state.text);
+        this.setState({ text: '' });
     }
 
     render() {
@@ -28,5 +35,6 @@ class Search extends Component {
         )
     }
 }
+
 
 export default Search
