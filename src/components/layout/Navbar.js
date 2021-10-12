@@ -4,16 +4,13 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-
-
-
 const Navbar = ({ icon, title }) => {
     
 
         return (
             <nav className='navbar bg-primary'>
                 <h1>
-                    <FontAwesomeIcon icon={icon} /> {title} 
+                    <FontAwesomeIcon icon={icon} /> {title}
                 </h1>
                 <ul>
                     <li>
