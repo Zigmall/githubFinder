@@ -9,6 +9,7 @@ import { Alert } from "./components/layout/Alert";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import About from "./components/layout/pages/About";
 library.add(faInfoCircle)
 
 class App extends Component {
@@ -63,7 +64,8 @@ class App extends Component {
                     />
                     <Users loading={ loading } users={ users } />
                 </>
-            )} />
+              )} />
+              <Route exact path='/about' component={About}/>
           </Switch>
           
 
