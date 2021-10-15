@@ -8,10 +8,10 @@ import Search from "./components/layout/Search";
 import { Alert } from "./components/layout/Alert";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faCheck, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import About from "./components/layout/pages/About";
 import User from "./components/users/User";
-library.add(faInfoCircle)
+library.add(faInfoCircle, faCheck, faTimesCircle )
 
 class App extends Component {
   state = {
@@ -20,14 +20,14 @@ class App extends Component {
     loading: false,
     alert: null
   }
-  async componentDidMount() {
+  // async componentDidMount() {
 
-    this.setState({ loading: true });
-    const res = await axios.get(`https://api.github.com/users?client_id=
-    ${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=
-    ${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    this.setState({ users:  res.data, loading: false})
-  }
+  //   this.setState({ loading: true });
+  //   const res = await axios.get(`https://api.github.com/users?client_id=
+  //   ${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=
+  //   ${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+  //   this.setState({ users:  res.data, loading: false})
+  // }
 
   searchUser = async text => {
     this.setState({ loading: true });
