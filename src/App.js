@@ -9,6 +9,7 @@ import { Alert } from "./components/layout/Alert";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInfoCircle, faCheck, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
 import About from "./components/layout/pages/About";
 import User from "./components/users/User";
 library.add(faInfoCircle, faCheck, faTimesCircle )

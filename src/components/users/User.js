@@ -39,9 +39,9 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match}) => {
         return (
             <> 
             <Link to='/' className='btn btn-light'>Back to search</Link>
-            Hireable: {' '}
+            Hireable: {''}
             {hireable ? 
-                (<FontAwesomeIcon icon='fa-check' className='text-success'/>) : 
+                (<FontAwesomeIcon icon='check' className='text-success'/>) : 
                 (<FontAwesomeIcon icon='times-circle' className='text-danger'/>)
             }
 
