@@ -21,14 +21,6 @@ class App extends Component {
     alert: null,
     repos: [],
   }
-  // async componentDidMount() {
-
-  //   this.setState({ loading: true });
-  //   const res = await axios.get(`https://api.github.com/users?client_id=
-  //   ${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=
-  //   ${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-  //   this.setState({ users:  res.data, loading: false})
-  // }
 
   searchUser = async text => {
     this.setState({ loading: true });
@@ -63,8 +55,6 @@ class App extends Component {
     ${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
     this.setState({ repos:  res.data, loading: false})
   }
-
-
 
   render() {
     const { repos, loading, users, user } = this.state;
