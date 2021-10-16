@@ -11,6 +11,8 @@ import About from "./components/layout/pages/About";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInfoCircle, faCheck, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
+import GithubState from './context/github/GithubState';
+
 library.add(faInfoCircle, faCheck, faTimesCircle )
 
 const App = () => {
@@ -62,38 +64,40 @@ const App = () => {
     
 
     return (
-      <Router>
-        <div className='App'>
-          <Navbar />
-          <div className='container'>
-            <Alert alert={alert} />
-            <Switch>
-              <Route exact path='/' render={props => (
-                <>
-                    <Search searchUsers={searchUsers} 
-                      clearUsers={clearUsers} 
-                      showClear={users.length > 0}
-                      showAlert={showAlert}
+      <GithubState >
+        <Router>
+          <div className='App'>
+            <Navbar />
+            <div className='container'>
+              <Alert alert={alert} />
+              <Switch>
+                <Route exact path='/' render={props => (
+                  <>
+                      <Search searchUsers={searchUsers} 
+                        clearUsers={clearUsers} 
+                        showClear={users.length > 0}
+                        showAlert={showAlert}
+                      />
+                      <Users loading={ loading } users={ users } />
+                  </>
+                )} />
+                <Route exact path='/about' component={About}/>
+                <Route exact path='/user/:login' render={props => (
+                  <User { ...props } 
+                    getUser={getUser} 
+                    getUserRepos={getUserRepos} 
+                    user={user} 
+                    loading={loading}
+                    repos={repos}
                     />
-                    <Users loading={ loading } users={ users } />
-                </>
-              )} />
-              <Route exact path='/about' component={About}/>
-              <Route exact path='/user/:login' render={props => (
-                <User { ...props } 
-                  getUser={getUser} 
-                  getUserRepos={getUserRepos} 
-                  user={user} 
-                  loading={loading}
-                  repos={repos}
-                  />
-              )} />
-          </Switch>
-          
+                )} />
+            </Switch>
+            
 
+            </div>
           </div>
-        </div>
-      </Router> 
+        </Router> 
+      </GithubState>
     );
 
 };
