@@ -16,17 +16,9 @@ import GithubState from './context/github/GithubState';
 library.add(faInfoCircle, faCheck, faTimesCircle )
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const [repos, setRepos] = useState([]);
-
-
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-  }
 
   const showAlert = (msg, type) => {
     setAlert({ msg, type });
@@ -34,14 +26,6 @@ const App = () => {
     setTimeout(() => setAlert(null), 3000)
   }
 
-  const getUser = async (userName) => {
-    setLoading(true);
-    const res = await axios.get(`https://api.github.com/users/${userName}?client_id=
-    ${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=
-    ${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    setUser(res.data);
-    setLoading(false);
-  }
 
   const getUserRepos = async (userName) => {
     setLoading(true);
@@ -51,8 +35,6 @@ const App = () => {
     setRepos(res.data);
     setLoading(false);
   }
-
-    
 
     return (
       <GithubState >
@@ -65,20 +47,15 @@ const App = () => {
                 <Route exact path='/' render={props => (
                   <>
                       <Search  
-                        clearUsers={clearUsers} 
-                        showClear={users.length > 0}
                         showAlert={showAlert}
                       />
-                      <Users loading={ loading } users={ users } />
+                      <Users />
                   </>
                 )} />
                 <Route exact path='/about' component={About}/>
                 <Route exact path='/user/:login' render={props => (
                   <User { ...props } 
-                    getUser={getUser} 
                     getUserRepos={getUserRepos} 
-                    user={user} 
-                    loading={loading}
                     repos={repos}
                     />
                 )} />
