@@ -8,7 +8,7 @@ import Alert from "./components/layout/Alert";
 import About from "./components/layout/pages/About";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInfoCircle, faCheck, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import GithubState from './context/github/GithubState';
+import GithubState from './context/github/githubState';
 import AlertState from './context/alert/AlertState';
 import NotFound from "./components/layout/pages/NotFound";
 library.add(faInfoCircle, faCheck, faTimesCircle );
