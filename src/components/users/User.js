@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Spinner from '../layout/Spinner';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Repos from '../repos/Repos';
+import GithubContext from '../../context/github/githubContext';
 
 
-export class User extends Component {
-    componentDidMount() {
-        this.props.getUser(this.props.match.params.login)
-        this.props.getUserRepos(this.props.match.params.login)
-    }
+const User = ({  match}) => {
+    const githubContext = useContext(GithubContext)
 
-    static propTypes = {
-        loading: PropTypes.bool,
-        user: PropTypes.object.isRequired,
-        getUser: PropTypes.func.isRequired,
-        getUserRepos: PropTypes.func.isRequired,
-        repos: PropTypes.array.isRequired,
-    }
+    const { loading, user, getUser, getUserRepos, repos } = githubContext;
 
+    useEffect(() => {
+        getUser(match.params.login);
+        getUserRepos(match.params.login);
+        //eslint-disable-next-line
+    }, []);
 
-    render() {
         const {
             name,
             avatar_url,
@@ -37,9 +32,7 @@ export class User extends Component {
             public_gists,
             hireable
 
-        } = this.props.user;
-
-        const { loading, repos } = this.props;
+        } = user;
 
         if(loading) {
             return <Spinner />
@@ -48,9 +41,9 @@ export class User extends Component {
         return (
             <> 
             <Link to='/' className='btn btn-light'>Back to search</Link>
-            Hireable: {' '}
+            Hireable: {''}
             {hireable ? 
-                (<FontAwesomeIcon icon='fa-check' className='text-success'/>) : 
+                (<FontAwesomeIcon icon='check' className='text-success'/>) : 
                 (<FontAwesomeIcon icon='times-circle' className='text-danger'/>)
             }
 
@@ -102,7 +95,7 @@ export class User extends Component {
             <Repos repos={repos} />
             </>
         )
-    }
 }
+
 
 export default User
