@@ -16,6 +16,15 @@ Application uses context and hooks.
 [GitHub REST API docs](https://docs.github.com/en/rest).
 
 
+## Example of API Endpoints:
+
+[https://api.github.com/users](https://api.github.com/users)
+
+[https://api.github.com/search/users?q=zig](https://api.github.com/search/users?q=zig)
+
+[https://api.github.com/users/Zigmall](https://api.github.com/users/Zigmall)
+
+
 
 ## Available Scripts
 
