@@ -6,7 +6,7 @@ Simple application for finding GitHub users by nickname. Application deals with 
 After we choose a user and hit ‘More’ button, app fetch the data and shows it in clear way. 
 
 On user page we have access to informations like: bio, avatar, number of repos, gists, followers and following. 
-Additionally on bottom of the page there is a list of five lastly released repos with links and button to visit original GitHub page.
+Additionally on bottom of the page there is a list of five lastly released repos and button to visit original GitHub page.
 
 Application uses context and hooks.
 
